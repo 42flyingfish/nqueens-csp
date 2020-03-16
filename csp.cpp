@@ -6,7 +6,6 @@
 #include <iostream>
 
 CSP::CSP() {
-	srand(time(NULL));
 
 	int row = (rand() % 25);
 	placeQueen(0, row);
@@ -166,6 +165,9 @@ bool CSP::isSolution() {
 }
 
 void CSP::minimize(const int column) {
+	if (conflicts[column][board[column]].size() == 0)
+		return;
+
 	const int row = getMinConflict(column);
 	removeQueen(column);
 	placeQueen(column, row);

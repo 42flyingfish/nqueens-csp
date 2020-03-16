@@ -5,11 +5,12 @@
 bool minMax(CSP & problem, const int maxSteps);
 
 int main() {
+	srand(time(NULL));
 	std::cout << "Hello world" <<std::endl;
 	int counter = 0;
 	auto start = std::chrono::high_resolution_clock::now();
 
-	for (int i = 0; i < 1000; ++i) {
+	for (int i = 0; i < 1000000; ++i) {
 		CSP problem;
 		if (minMax(problem, 1000)) {
 			++counter;
@@ -17,8 +18,8 @@ int main() {
 	}
 	auto stop = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float> dur = stop - start;
-	std::cout << "Run time was " << std::chrono::duration_cast<std::chrono::milliseconds>(dur).count() / 1000<< " ms\n";
-	std::cout << counter << "\n";
+	std::cout << "Run time was " << std::chrono::duration_cast<std::chrono::milliseconds>(dur).count() / 1000000.0 << " ms\n";
+	std::cout << counter /1000000.0<< "\n";
 
 	return 0;
 }
